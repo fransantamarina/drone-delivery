@@ -7,7 +7,6 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - drone-delivery-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: droneAppPass

@@ -1,7 +1,6 @@
 # Build MySQL stage
 FROM mysql:latest AS mysql_build
 WORKDIR /docker-entrypoint-initdb.d/
-COPY init.sql .
 
 # Build application stage
 FROM maven:3.8.4-openjdk-17-slim AS app_build
