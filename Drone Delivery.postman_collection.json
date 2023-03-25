@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8a942f4d-6748-45a3-b569-1c047eeb8cb3",
+		"_postman_id": "327db121-a869-43b3-bb09-7bc179860671",
 		"name": "Drone Delivery",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12096207"
@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"serialNumber\": \"LW1234\",\r\n    \"model\": \"LightWeight\"\r\n}",
+							"raw": "{\r\n    \"serialNumber\": \"LN13245242\",\r\n    \"model\": \"LightWeight\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -33,7 +33,8 @@
 							"path": [
 								"drones"
 							]
-						}
+						},
+						"description": "**Create Drone**\n\nTo create a Drone we need its serial number(100 characters max) and its model. Available models to save are LIGHTWEIGHT, MIDDLEWEIGHT, CRUISERWEIGHT, HEAVYWEIGHT (case insensitive)."
 					},
 					"response": []
 				},
@@ -52,7 +53,8 @@
 							"path": [
 								"drones"
 							]
-						}
+						},
+						"description": "**Get all Drones**\n\nThis endpoint will retrieve all the drones from the database."
 					},
 					"response": []
 				},
@@ -72,7 +74,8 @@
 								"drones",
 								"available"
 							]
-						}
+						},
+						"description": "**Get Available Drones**\n\nThis endpoint will retrieve every idle Drone with at least 25% remaining battery from the database."
 					},
 					"response": []
 				},
@@ -96,10 +99,11 @@
 							"variable": [
 								{
 									"key": "serialNumber",
-									"value": null
+									"value": "LN13245242"
 								}
 							]
-						}
+						},
+						"description": "**Get Remaining Battery of a Drone**\n\nThis endpoint needs the serial number of the drone as path variable and will respond with the remaining battery of a given Drone."
 					},
 					"response": []
 				},
@@ -132,10 +136,11 @@
 							"variable": [
 								{
 									"key": "serialNumber",
-									"value": "CN13245242"
+									"value": "LN13245242"
 								}
 							]
-						}
+						},
+						"description": "**Load a Drone**\n\nThis endpoint needs the serial number of an existing Drone as path variable and array of existing medication codes."
 					},
 					"response": []
 				},
@@ -162,7 +167,8 @@
 									"value": "LN13245242"
 								}
 							]
-						}
+						},
+						"description": "**Get Load**\n\nThis request needs the serial number of a Drone as path variable and will retrieve the codes of the medications carried by that drone."
 					},
 					"response": []
 				}
@@ -195,7 +201,8 @@
 							"path": [
 								"medications"
 							]
-						}
+						},
+						"description": "**Create medication**\n\nThis endpoint needs an object with name, code, weight(as a decimal number) and the url of an image to create a new Medication."
 					},
 					"response": []
 				}
