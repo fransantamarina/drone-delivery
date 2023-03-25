@@ -1,7 +1,5 @@
 # drone-delivery
 
-[TOC]
-
 After cloning the repository, follow instructions below to run this project.
 
 #### Download the Postman Collection
