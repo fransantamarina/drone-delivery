@@ -1,0 +1,32 @@
+version: '3'
+services:
+  drone-delivery-db:
+    container_name: drone-delivery-db
+    image: mysql:8.0.32
+    restart: unless-stopped
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - drone-delivery-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: droneAppPass
+      MYSQL_DATABASE: drone_delivery
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+  app:
+    container_name: drone-delivery-app
+    depends_on:
+      - drone-delivery-db
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://drone-delivery-db:3306/drone_delivery?createDatabaseIfNotExist=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: droneAppPass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+volumes:
+  drone-delivery-data:
